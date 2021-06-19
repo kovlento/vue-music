@@ -24,7 +24,11 @@ const routes = [
     component: TopList,
     children: [{ path: ':id', component: TopDetail }]
   },
-  { path: '/search', component: Search }
+  {
+    path: '/search',
+    component: Search,
+    children: [{ path: ':id', component: SingerDetail }]
+  }
 ]
 
 const router = createRouter({

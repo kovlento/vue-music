@@ -20,7 +20,7 @@ function deleteFromArray(arr, compare) {
 
 export function save(item, key, compare, maxLen) {
   const items = storage.get(key, [])
-  insertArray(items, item, compare)
+  insertArray(items, item, compare, maxLen)
   storage.set(key, items)
   return items
 }
@@ -34,4 +34,9 @@ export function remove(key, compare) {
 
 export function load(key) {
   return storage.get(key, [])
+}
+
+export function clear(key) {
+  storage.remove(key)
+  return []
 }
