@@ -124,6 +124,7 @@ import useCd from './use-cd'
 import useLyric from './use-lyric'
 import useMiddleDot from './use-middle-dot'
 import useAnimation from './use-animation'
+import usePlayHistory from './use-play-history'
 import ProgressBar from './progress-bar'
 import MiniPlayer from './mini-player'
 import Scroll from '@/components/base/scroll/scroll'
@@ -155,6 +156,7 @@ export default {
     const { currentLyric, currentLineNum, playLyric, stopLyric, lyricListRef, lyricScrollRef, pureMusicLyric, playingLyric } = useLyric({ songReady, currentTime })
     const { currentShow, middleLStyle, middleRStyle, onMiddleTouchStart, onMiddleTouchMove, onMiddleTouchEnd } = useMiddleDot()
     const { cdWrapperRef, enter, afterEnter, leave, afterLeave } = useAnimation()
+    const { savePlay } = usePlayHistory()
 
     // computed
     const playList = computed(() => store.state.playList)
@@ -266,6 +268,7 @@ export default {
       }
       songReady.value = true
       playLyric()
+      savePlay(currentSong.value)
     }
 
     function error() {
