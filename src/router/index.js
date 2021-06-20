@@ -6,6 +6,7 @@ import Search from '@/views/search'
 import SingerDetail from '@/views/singer-detail'
 import Album from '@/views/album'
 import TopDetail from '@/views/top-detail'
+import UserCenter from '@/views/user-center'
 
 const routes = [
   { path: '/', redirect: '/recommend' },
@@ -28,6 +29,12 @@ const routes = [
     path: '/search',
     component: Search,
     children: [{ path: ':id', component: SingerDetail }]
+  },
+  {
+    path: '/user',
+    components: {
+      user: UserCenter
+    }
   }
 ]
 
